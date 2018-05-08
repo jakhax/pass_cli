@@ -168,6 +168,79 @@ def search(username):
     elif session_data==False:
         return click.echo(click.style("Account name: {} is logged out".format(username), bg='red', fg='white'))
 
+@cli.command(help="Search for user data and edit password ")
+@click.option('--username', prompt='Username',help="Username for password manager account")
+def edit_pass(username):
+    session_data=SessionCheck(username).get_user_session()
+    if session_data==True:
+        credentials=User_Creds(username).get_creds()
+        if len(credentials)>=1:
+            table = Table(
+                pass_cli.config.fieldnames,'rst',
+                colors=pass_cli.config.colors,
+                hidden=['password']
+            )
+            click.echo(table.render(credentials))
+        
+            cred_name=click.prompt("Unique name of creds to edit", type=str)
+            search_data=User_Creds(username).get_creds()
+            for row in search_data:
+                if row[pass_cli.config.fieldnames[0]]==cred_name:
+                    index=search_data.index(row)
+                    new_pass=getpass("Enter credential password:")
+                    new_pass2=getpass("Confirm credential password:")
+                    if new_pass ==new_pass2:
+                        search_data[index][pass_cli.config.fieldnames[2]]=new_pass
+                        User_Creds(username).edit(search_data)
+                        pyperclip.copy(new_pass)
+                        return click.echo(click.style("Changed password for  {}..password copied to clipboard".format(cred_name), bg='green', fg='white'))
+                    else:
+                        return click.echo(click.style("Passwords do not match try again", bg='red', fg='white'))
+
+            return click.echo(click.style("Did not Find password for  {}".format(cred_name), bg='red', fg='white'))
+        elif len(credentials)<1:
+            return click.echo(click.style("Empty data for account name: {}".format(username), bg='red', fg='white'))
+        else:
+            return click.echo(click.style("Unable to display credentials", bg='red', fg='white'))
+    if type(session_data)==ValueError:
+        return click.echo(click.style("Account  name {} does not  exist".format(username), bg='red', fg='white'))
+    elif session_data==False:
+        return click.echo(click.style("Account name: {} is logged out".format(username), bg='red', fg='white'))
+
+@cli.command(help="Search for user data and delete credential")
+@click.option('--username', prompt='Username',help="Username for password manager account")
+def del_cred(username):
+    session_data=SessionCheck(username).get_user_session()
+    if session_data==True:
+        credentials=User_Creds(username).get_creds()
+        if len(credentials)>=1:
+            table = Table(
+                pass_cli.config.fieldnames,'rst',
+                colors=pass_cli.config.colors,
+                hidden=['password']
+            )
+            click.echo(table.render(credentials))
+        
+            cred_name=click.prompt("Unique name of creds to delete", type=str)
+            search_data=User_Creds(username).get_creds()
+            for row in search_data:
+                if row[pass_cli.config.fieldnames[0]]==cred_name:
+                    index=search_data.index(row)
+                    if click.confirm('Confirm that you want to delete {}'.format(cred_name)):
+                        search_data.remove(search_data[index])
+                        User_Creds(username).edit(search_data)
+                        return click.echo(click.style("Deleted creds for  {}".format(cred_name), bg='green', fg='white'))
+                    else: 
+                        break   
+            return click.echo(click.style("Did not Find password for  {}".format(cred_name), bg='red', fg='white'))
+        elif len(credentials)<1:
+            return click.echo(click.style("Empty data for account name: {}".format(username), bg='red', fg='white'))
+        else:
+            return click.echo(click.style("Unable to display credentials", bg='red', fg='white'))
+    if type(session_data)==ValueError:
+        return click.echo(click.style("Account  name {} does not  exist".format(username), bg='red', fg='white'))
+    elif session_data==False:
+        return click.echo(click.style("Account name: {} is logged out".format(username), bg='red', fg='white'))
 
 if __name__=="__main__":
     cli()
