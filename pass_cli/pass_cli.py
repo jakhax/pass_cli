@@ -63,6 +63,48 @@ def terminate_account(name,password):
     else:
         return click.echo(click.style("Unable to terminate account name: {}".format(name), bg='red', fg='white'))
 
+@cli.command(help="Log in to an already existing account")
+@click.option('--name', prompt='Username',help="Username for password manager account")
+@click.password_option(help="Master password to decrypt / encrypt password files")
+def login(name,password):
+    '''
+    Log in to an already existing account
+    '''
+    session_data=SessionCheck(name).get_user_session()
+    if session_data==True:
+        return click.echo(click.style("Account  name {} is already logged in".format(name), bg='red', fg='white'))
+    if type(session_data)==ValueError:
+        return click.echo(click.style("Account  name {} does not  exist".format(name), bg='red', fg='white'))
+    elif not session_data:
+        session_state=pass_cli.manage_users.User_Account(name,password).login() 
+        if session_state==True:
+            return click.echo(click.style("Account  name {} has been successfully logged in".format(name), bg='green', fg='white'))
+        elif type(session_state)== ValueError:
+            return click.echo(click.style("Wrong password given for account name: {}".format(name), bg='red', fg='white'))
+        else:
+            return click.echo(click.style("Unable to log into account name: {}".format(name), bg='red', fg='white'))
+    else:
+        return click.echo(click.style("Unable to log into account name: {}".format(name), bg='red', fg='white'))
+
+@cli.command(help="Log out of an already existing account")
+@click.option('--name', prompt='Username',help="Username for password manager account")
+@click.password_option(help="Master password to decrypt / encrypt password files")
+def logout(name,password):
+    '''
+    Log out of an already existing account
+    '''
+    session_data=SessionCheck(name).get_user_session()
+    if session_data==True:
+        session_state=pass_cli.manage_users.User_Account(name,password).logout()
+        if session_state==False:
+            return click.echo(click.style("Unable to log out account name: {}".format(name), bg='red', fg='white'))
+        else:
+            return click.echo(click.style("Account  name {} has been successfully logged out".format(name), bg='green', fg='white'))
+    elif session_data==False:
+        return click.echo(click.style("Account name: {} is already logged out".format(name), bg='red', fg='white'))
+    else:
+        return click.echo(click.style("Unable to log out account name: {}".format(name), bg='red', fg='white'))
+
 
 if __name__=="__main__":
     cli()
