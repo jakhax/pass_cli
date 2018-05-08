@@ -4,8 +4,6 @@ Pass Cli
 - - - -
 Author: [Jack Ogina](https://github.com/jakhax)
 
-
-
 [Pass Cli](https://github.com/jakhax/pass_cli.git)lets you manage
 your login credentials from the terminal. Password files are saved into
 [Advance Encryption Standard AES256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) encrypted files
@@ -30,9 +28,6 @@ more about how my cipher implementation works check out this repo [hexcrypt](htt
 + [ ] Search with regular expression
 + [ ] Exporting Password Accounts to an encrypted text file
 + [ ] Importing Password from a previous account file.
-
-
-
 
 ## Installation
 ```bash
@@ -112,7 +107,6 @@ Enter credential login/username:: johndoe
 Enter credential password:
 Confirm credential password:
 Credentials successfully added
-
 ```
 ### 2) Logging in and out of a user account
 
@@ -211,7 +205,6 @@ Encryption is done with [AES256](http://en.wikipedia.org/wiki/Advanced_Encryptio
 The default credentials files path is at `../users`. 
 The credentials are stored in encrypted CSV files.
 Each user has a csv file identified by their user-name.
-
 
 ### Credentials structure
 
