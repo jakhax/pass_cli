@@ -12,7 +12,7 @@ your login credentials from the terminal. Password files are saved into
 using the user's master password as the encryption key. Only with the master password used to create the user account can one decrypt password files. If you want to know
 more about how my cipher implementation works check out this repo [hexcrypt](https://github.com/jakhax/hexcrypt_aes256_encryption.git).
 
-![Pass_cli console interface](https://imgur.com/8LVJdQF)
+![Pass_cli console interface](https://i.imgur.com/8LVJdQF.jpg)
 
 ------------------------------------------------------------------------
 
