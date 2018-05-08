@@ -40,9 +40,9 @@ pip install -r requirements.txt
 The following libraries are required
 * pycrypto==2.6.1
 * pyperclip==1.5.7
-* click==6.7
-* PyYAML==3.12
-* tabulate==0.8.2
+* click==6.6
+* PyYAML==3.11
+* tabulate==0.7.5
 
 ### Running Tests
 ```bash
@@ -80,7 +80,6 @@ pass_cli search
 
 # edit credential password; followed by prompts for username and name of creds to edit. command: `update_pass`
 pass_cli update_pass
-
 ```
 
 ## Tutorials
@@ -167,6 +166,7 @@ Changed password for  facebook..password copied to clipboard
 ```
 
 ### 5) Deleting credentials and terminating user accounts
+
 ```bash
 #Deleting credentials using name
 Username: jak hax
