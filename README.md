@@ -4,13 +4,13 @@ Pass Cli
 - - - -
 Author: [Jack Ogina](https://github.com/jakhax)
 
-[Pass Cli](https://github.com/jakhax/pass_cli.git)lets you manage
+[Pass Cli](https://github.com/jakhax/pass_cli.git) lets you manage
 your login credentials from the terminal. Password files are saved into
 [Advance Encryption Standard AES256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) encrypted files
 using the user's master password as the encryption key. Only with the master password used to create the user account can one decrypt password files. If you want to know
 more about how my cipher implementation works check out this repo [hexcrypt](https://github.com/jakhax/hexcrypt_aes256_encryption.git).
 
-![Pass_cli console interface](https://i.imgur.com/8LVJdQF.jpg)
+![Pass_cli console interface](https://i.imgur.com/CFY1J1I.jpg)
 
 ------------------------------------------------------------------------
 
@@ -51,7 +51,8 @@ python -m unittest discover tests
 
 ### Running code
 ```bash
-python pass_cli.pass_cli.py
+cd pass_cli
+python pass_cli.py
 ```
 
 ## Quickstart
@@ -198,7 +199,7 @@ Account  name john has been successfully terminated
 
 ### Encryption
 
-Encryption is done with [AES256](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard). Take a look at [crypt.py](https://github.com/jakhax/pass_cli/pass_clie/crypt.py) module to know more. Specifically how the program is able to authenticate user log in /decryption sessions.
+Encryption is done with [AES256](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard). Take a look at [crypt.py](https://github.com/jakhax/pass_cli/blob/master/pass_cli/crypt.py) module to know more. Specifically how the program is able to authenticate user log in /decryption sessions.
 
 ### Credentials Path
 
@@ -219,10 +220,10 @@ Credentials are strored in the csv files in a dictionary format which is easy to
 
 ## Warning
 
-This is an academic project with limited research hence this project at its current stage should not be used to secure serious passwords as suffers from the following but not limited to security purposes:
+This is an academic project with limited research hence this project at its current stage should not be used to secure serious passwords as suffers from the following but not limited to security implications:
 * The CSV files can be copied easily by an adversary as they are not hidden; though the encryption AES256 is pretty good and a bruteforce may be unsuccessful
 * In an event the user forgets to log out an adversay can be able to obtain the password files in plain-text.
-* The security method I have implemented on [crypt.py](https://github.com/jakhax/pass_cli/pass_clie/crypt.py) has not been examined in detail for security issues 
+* The security method I have implemented on [crypt.py](https://github.com/jakhax/pass_cli/pass_cli/crypt.py) has not been examined in detail for security issues 
 
 ## Contributing
 
@@ -230,7 +231,7 @@ This is an academic project with limited research hence this project at its curr
 - Git clone [https://github.com/jakhax/pass_cli.git](https://github.com/jakhax/pass_cli.git) and make the changes.
 - Write your tests on `tests/`
 - If everything is OK. push your changes and make a pull request. ;)
-- Examining the security implementation of [crypt.py](https://github.com/jakhax/pass_cli/pass_clie/crypt.py) and suggesting ways in which it could be comprosmised by creating issues.
+- Examining the security implementation of [crypt.py](https://github.com/jakhax/pass_cli/blob/master/pass_cli/crypt.py) and suggesting ways in which it could be comprosmised by creating issues.
 
 ## License ([MIT License](http://choosealicense.com/licenses/mit/))
 
