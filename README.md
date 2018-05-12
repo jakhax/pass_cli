@@ -35,7 +35,7 @@ git clone https://github.com/jakhax/pass_cli.git && cd pass_cli
 ```
 ### Installing dependencies
 ```bash
-pip install -r requirements.txt
+pip install -r requirements
 ```
 The following libraries are required
 * pycrypto==2.6.1
@@ -46,7 +46,7 @@ The following libraries are required
 
 ### Running Tests
 ```bash
-python -m unittest discover tests
+cd tests && python -m unittest discover 
 ```
 
 ### Running code
@@ -72,6 +72,9 @@ pass_cli logout
 
 # add new credentials to a logged in user account,followed by a username prompt. Command: `add_cred`
 pass_cli add_cred
+
+# add new credentials with a randomly generated password to a logged in user account,followed by a username and password length prompt. Command: `add_cred`
+pass_cli add_cred --random
 
 # delete credentials of a logged in user account,followed by a username prompt. Command: `del_cred`
 pass_cli del_cred
