@@ -230,7 +230,7 @@ This is an academic project with limited research hence this project at its curr
 
 ## Contributing
 
-- Fork the repository [https://github.com/jakhax/pass_cli/fork](https://github.com/marcwebbie/pysswords/fork)
+- Fork the repository [https://github.com/jakhax/pass_cli/fork](https://github.com/jakhax/pass_cli/fork)
 - Git clone [https://github.com/jakhax/pass_cli.git](https://github.com/jakhax/pass_cli.git) and make the changes.
 - Write your tests on `tests/`
 - If everything is OK. push your changes and make a pull request. ;)
