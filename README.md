@@ -2,6 +2,12 @@ Pass Cli
 ===================
 
 - - - -
+# NOTE 
+
+Theres a security vulnearbility with the [pycryto2.6.1](https://github.com/dlitz/pycrypto/issues/253) package, pycrpto generates weak ElGamal key parameters which allows attackers to obtain sensitive information by reading ciphertext data. The Decisional Diffie-Hellman (DDH) assumption does not hold for PyCrypto's ElGamal implementation. Please await as I update the code to use an updated
+
+For more info: https://nvd.nist.gov/vuln/detail/CVE-2018-6594
+
 Author: [Jack Ogina](https://github.com/jakhax)
 
 [Pass Cli](https://github.com/jakhax/pass_cli.git) lets you manage
