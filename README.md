@@ -2,11 +2,6 @@ Pass Cli
 ===================
 
 - - - -
-# NOTE 
-
-Theres a security vulnearbility with the [pycryto2.6.1](https://github.com/dlitz/pycrypto/issues/253) package, pycrpto generates weak ElGamal key parameters which allows attackers to obtain sensitive information by reading ciphertext data. The Decisional Diffie-Hellman (DDH) assumption does not hold for PyCrypto's ElGamal implementation. Please await as I update the code to use an updated
-
-For more info: https://nvd.nist.gov/vuln/detail/CVE-2018-6594
 
 Author: [Jack Ogina](https://github.com/jakhax)
 
@@ -19,6 +14,14 @@ more about how my cipher implementation works check out this repo [hexcrypt](htt
 ![Pass_cli console interface](https://i.imgur.com/CFY1J1I.jpg)
 
 ------------------------------------------------------------------------
+
+# NOTE 
+
+There is a security vulnearbility with the [pycryto2.6.1](https://github.com/dlitz/pycrypto/issues/253) package, pycrpto2.61 generates weak ElGamal key parameters which allows attackers to obtain sensitive information by reading ciphertext data. 
+
+When i get the time i will update the code to use a different cryptography library.
+
+For more info: https://nvd.nist.gov/vuln/detail/CVE-2018-6594
 
 ## Main Features
 
@@ -41,7 +44,7 @@ git clone https://github.com/jakhax/pass_cli.git && cd pass_cli
 ```
 ### Installing dependencies
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ```
 The following libraries are required
 * pycrypto==2.6.1
