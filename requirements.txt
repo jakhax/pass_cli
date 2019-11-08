@@ -1,6 +1,6 @@
 pycrypto==2.6.1
 pyperclip==1.5.7
 click==6.6
-PyYAML==3.11
+PyYAML==5.1
 tabulate==0.7.5
  
